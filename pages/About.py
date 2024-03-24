@@ -41,7 +41,7 @@ def run():
             Our flexible robot leasing programs provide cost-effective access to our automated solutions, allowing you to scale your operations and stay ahead of the curve.
             """
         )
-        st.button("Learn More", key="learn_more_leasing")
+        st.page_link("pages/Service.py", label=":blue[Learn More]")
 
     with services_cols[1]:
         st.write(

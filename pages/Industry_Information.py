@@ -45,7 +45,7 @@ def run():
             Automation through robotic harvesters can improve efficiency, reduce labor dependence, and minimize damage to produce. This leads to higher yields, lower costs, and improved product quality.
             """
         )
-        robot_harvester_image = "static/robot_harvester.jpg"
+        robot_harvester_image = "static/strawberryrobotlarge.jpg"
         if robot_harvester_image:
             st.image(robot_harvester_image, caption="Robotic Harvester")
 
@@ -99,16 +99,16 @@ def run():
     st.subheader("Explore Further")
     explore_cols = st.columns(3)
     with explore_cols[0]:
-        st.write("### Horticulture")
-        st.button("Learn More", key="explore_horticulture")
+        st.write("### Object Detection Image Sorting")
+        st.page_link("pages/ODIS.py", label=":blue[Learn More]")
 
     with explore_cols[1]:
-        st.write("### Robotics")
-        st.button("Learn More", key="explore_robotics")
+        st.write("### MiFood Inference Testing")
+        st.page_link("pages/MFIT.py", label=":blue[Learn More]")
 
     with explore_cols[2]:
-        st.write("### AI and Machine Learning")
-        st.button("Learn More", key="explore_ai_ml")
+        st.write("### Technology")
+        st.page_link("pages/Technology.py", label=":blue[Learn More]")
 
 if __name__ == "__main__":
     run()

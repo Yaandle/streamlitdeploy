@@ -91,14 +91,14 @@ if source_img:
 
     if st.button('Detect Objects'):
         if option2 == 'Segmentation':
-            results = model(np_image, conf=0.4, show_boxes=False)
+            results = model(np_image, conf=0.3, show_boxes=False)
             for result in results:
                 annotated_image = result.plot(masks=True, labels=False)
                 annotated_image = Image.fromarray(annotated_image[..., ::-1])
                 with col2:
                     st.image(annotated_image, caption='Detected Image with Segmentation', use_column_width=True)
         else:
-            results = model.predict(np_image, conf=0.40, show_conf=True)
+            results = model.predict(np_image, conf=0.3, show_conf=True)
             annotated_image = results[0].plot()
             annotated_image = Image.fromarray(annotated_image[..., ::-1])
             with col2:
