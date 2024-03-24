@@ -124,8 +124,8 @@ models = [
     {
         "name": "Strawberry Detection",
         "description": "A model trained to detect strawberries in images and videos.",
-        "image": "static/strawberry.jpg",
-        "download_url": "https://example.com/models/strawberry_detection.pt"
+        "image": "strawberry.png",
+        "download_url": "UltralyticsModels/StrawberryV6.pt"
     },
     {
         "name": "Grape Segmentation",
