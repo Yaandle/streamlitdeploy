@@ -21,36 +21,13 @@ def run():
             Our solutions are tailored to meet the unique needs of each client, offering customizable and scalable automation solutions that seamlessly integrate into existing operations. From precision planting and harvesting to crop monitoring and management, our range of services empowers growers to make informed decisions, increase yields, and minimize environmental impact.
             """
         )
-
-    st.subheader("Technology")
-    st.write(
-        """
-        At the heart of MiFood's solutions lies a fusion of cutting-edge technologies, including advanced robotics, computer vision, machine learning, and artificial intelligence. Our team of skilled engineers and scientists continuously push the boundaries of innovation, developing proprietary algorithms and hardware systems that redefine the capabilities of automated horticultural operations.
-        """
-    )
-    technology_image = Path("images/technology.jpg")
-    if technology_image.exists():
-        st.image(technology_image, caption="MiFood's advanced robotics technology")
-
-    st.subheader("Services")
-    services_cols = st.columns(2)
-    with services_cols[0]:
+    
+    with st.expander("Our Team"):
         st.write(
             """
-            ### Robot Leasing
-            Our flexible robot leasing programs provide cost-effective access to our automated solutions, allowing you to scale your operations and stay ahead of the curve.
+            MiFood is driven by a diverse and talented team of engineers, scientists, and agricultural experts, united by a shared passion for innovation and a commitment to sustainable practices. Our multidisciplinary approach ensures that our solutions are not only technologically advanced but also deeply rooted in a comprehensive understanding of horticultural processes and challenges.
             """
         )
-        st.page_link("pages/Service.py", label=":blue[Learn More]")
-
-    with services_cols[1]:
-        st.write(
-            """
-            ### Customized Integration
-            Our team of experts work closely with you to integrate our solutions seamlessly into your existing operations, ensuring a smooth transition and maximizing efficiency.
-            """
-        )
-        st.button("Learn More", key="learn_more_integration")
 
     st.subheader("Industry Information")
     st.write(
@@ -59,32 +36,43 @@ def run():
         """
     )
     st.page_link("pages/Industry_Information.py", label=":blue[Learn More]")
-
-    st.subheader("Our Team")
+    st.divider()
+    st.subheader("Technology")
     st.write(
         """
-        MiFood is driven by a diverse and talented team of engineers, scientists, and agricultural experts, united by a shared passion for innovation and a commitment to sustainable practices. Our multidisciplinary approach ensures that our solutions are not only technologically advanced but also deeply rooted in a comprehensive understanding of horticultural processes and challenges.
+        At the heart of MiFood's solutions lies a fusion of cutting-edge technologies, including advanced robotics, computer vision, machine learning, and artificial intelligence. Our team of skilled engineers and scientists continuously push the boundaries of innovation, developing proprietary algorithms and hardware systems that redefine the capabilities of automated horticultural operations.
         """
     )
-    team_image = Path("images/team.jpg")
-    if team_image.exists():
-        st.image(team_image, caption="The MiFood team")
+    st.page_link("pages/Technology.py", label=":blue[Learn More]")
+    technology_image = Path("images/technology.jpg")
+    if technology_image.exists():
+        st.image(technology_image, caption="MiFood's advanced robotics technology")
 
-    st.subheader("Join the Revolution")
+    st.divider()
+    st.subheader("Services")
+    services_cols = st.columns(1)
+    with services_cols[0]:
+        st.write(
+            """
+            Robot Leasing:
+            Our flexible robot leasing programs provide cost-effective access to our automated solutions, allowing you to scale your operations and stay ahead of the curve.
+            """
+            """
+            Customized Integration:
+            Our team of experts work closely with you to integrate our solutions seamlessly into your existing operations, ensuring a smooth transition and maximizing efficiency.
+            """
+        )
+        
+    st.page_link("pages/Service.py", label=":blue[Learn More]")
+    st.divider()
+
+
+    st.subheader("Join the revolution")
     st.write(
         """
         We invite you to join us on this exciting journey as we redefine the future of horticulture. Together, we can unlock new levels of efficiency, productivity, and sustainability, ensuring a secure and abundant food supply for generations to come.
         """
     )
-    contact_form = st.form("Contact Form")
-    name = contact_form.text_input("Name")
-    email = contact_form.text_input("Email")
-    message = contact_form.text_area("Message")
-    submit_button = contact_form.form_submit_button("Submit")
-
-    if submit_button:
-        # Add code to handle form submission (e.g., send email, save to database)
-        st.success(f"Thank you, {name}! We will get back to you shortly.")
 
 if __name__ == "__main__":
     run()

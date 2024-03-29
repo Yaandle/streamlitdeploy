@@ -8,10 +8,9 @@ st.set_page_config(
 
 col1, col2 = st.columns([2, 3])
 with col1:
-    st.image("whitelogo.png", width=350)
-with col2:
     st.title("MiFood: Revolutionizing Horticulture with Robotics")
     st.write("Welcome to our website! We are passionate about using robotics to improve efficiency and sustainability in the horticultural industry.")
+
 
 st.header("About MiFood")
 with st.expander("Vision and Mission", expanded=True):
@@ -52,3 +51,5 @@ with st.expander("MFIT Inference"):
     st.markdown("[Go to MFIT](/MFIT)")
 
 st.write("MiFood, Australia | Contact: zac@mifood.es")
+
+st.image("whitelogo.png", width=350)
