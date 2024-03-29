@@ -11,14 +11,9 @@ import time
 import torch 
 
 #UI Header, Text paragraph and 2 Images
-st.title("Object Detection Image/Video Inference", )
-server_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-st.write(f"Server time: {server_time}")
-col1, col2 = st.columns(2)
-with col1:
-    st.image('static/strawberryrobotlarge.jpg', caption="", width=250)
-with col2:
-    st.image('static/strawberryrobot3.jpg', caption="", width=250)
+st.subheader("Object Detection Image/Video Inference"
+          )
+st.divider()
 
 multi = '''The MFIT app supports Dectection and Segmentation,
 These 2 tasks have different use cases and results.
@@ -28,7 +23,7 @@ Detection is the primary task supported by YOLOv8. It involves detecting objects
 Segmentation is a task that involves segmenting an image into different regions based on the content of the image. Each region is assigned a label based on its content.
 '''
 st.markdown(multi)
-
+st.write('To learn more about Ultralytics visit the docs https://docs.ultralytics.com/.')
 # Model and mode selection
 st.subheader("Select a model, or upload a custom model.")
 option = st.selectbox('Select a YOLOv8 model.', ('Strawberry', 'Grapes', 'Tomato', 'RND', 'Custom'))
@@ -42,6 +37,7 @@ model_paths = {
     'Apple': 'UltralyticsModels/AppleV1.pt',
     'Grapes': 'UltralyticsModels/GrapesV1.pt',
     'Tomato': 'UltralyticsModels/TomatoV3.pt',
+    'Apple': 'UltralyticsModels/AppleV1.pt',
     'RND': 'UltralyticsModels/rnd_detect4.0.pt',
 }
 
@@ -50,6 +46,7 @@ seg_model_paths = {
     'AppleSeg': 'UltralyticsModels/AppleV1.pt',
     'GrapesSeg': 'UltralyticsModels/GrapesV1.pt',
     'TomatoSeg': 'UltralyticsModels/TomatoV3.pt',
+    'Apple': 'UltralyticsModels/AppleV1.pt',
     'RND': 'UltralyticsModels/rnd_detect4.0.pt',
 }
 
@@ -163,7 +160,7 @@ st.subheader("Models")
 st.write('Ultralytics is a framework that allows different computer vision tasks. We train our models with custom data on the YOLOv8 models.')
 st.write('To see a full list of our avaiable models visit the Technology page.')
 st.page_link("pages/Technology.py", label="Models",)
-st.write('To learn more about Ultralytics visit the docs https://docs.ultralytics.com/.')
+
 
 
 tab1, tab2, tab3 = st.tabs(["Strawberry", "Grapes", "Tomato"])

@@ -26,7 +26,7 @@ option = st.selectbox('Select a YOLOv8 model.', ('Detect4.0', '200cc', '250cc'))
 st.write('You selected:', option, "Model")
 
 model_paths = {
-    'Detect4.0': 'C:/Users/Bozzy/Desktop/MiFood/Streamlit/UltralyticsModels/rnd_detect 4.0.pt',
+    'Detect4.0': 'UltralyticsModels/rnd_detect 4.0.pt',
     '200cc': 'UltralyticsModels/GrapesModel.pt',
     '250cc': 'UltralyticsModels/TomatoModel.pt',
 }
