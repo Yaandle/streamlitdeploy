@@ -8,14 +8,13 @@ st.set_page_config(
 
 col1, col2 = st.columns([2, 3])
 with col1:
-    st.title("MiFood: Revolutionizing Horticulture with Robotics")
+    st.title("MiFood")
     st.write("Welcome to our website! We are passionate about using robotics to improve efficiency and sustainability in the horticultural industry.")
 
 
-st.header("About MiFood")
 with st.expander("Vision and Mission", expanded=True):
     st.write("""
-        MiFood's vision is to create a future where robotics empowers the
+        Our vision is to create a future where robotics empowers the
         horticultural industry, leading to increased productivity, reduced
         waste, and a more sustainable food system. Our mission is to develop
         and deploy innovative robotic solutions that address real-world
@@ -50,6 +49,5 @@ with st.expander("MFIT Inference"):
     """)
     st.markdown("[Go to MFIT](/MFIT)")
 
-st.write("MiFood, Australia | Contact: zac@mifood.es")
-
+st.divider()
 st.image("whitelogo.png", width=350)

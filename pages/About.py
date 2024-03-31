@@ -74,5 +74,7 @@ def run():
         """
     )
 
+    st.write("MiFood, Australia | Contact: zac@mifood.es")
+
 if __name__ == "__main__":
     run()
