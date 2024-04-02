@@ -2,7 +2,6 @@ import streamlit as st
 import base64
 import os
 
-# CSS styles
 css = """
 <style>
     /* ... (existing CSS styles) ... */
@@ -10,7 +9,6 @@ css = """
 """
 st.markdown(css, unsafe_allow_html=True)
 
-# Content
 st.title("Technology")
 
 st.write("""
@@ -20,28 +18,24 @@ st.write("""
 
 st.divider()
 
-# ROS section
 with st.expander("Robot Operating System (ROS)"):
     st.write("""
         ROS is a flexible and robust framework for building robotic applications. It provides a set of tools and libraries for developing
         robot software, enabling seamless communication and collaboration between various components and devices.
     """)
 
-# Ultralytics section
 with st.expander("Computer Vision with Ultralytics"):
     st.write("""
         We utilize Ultralytics, a powerful computer vision framework, for tasks such as object detection, segmentation, and tracking.
         Ultralytics provides state-of-the-art models, including YOLOv8, which offers high accuracy and real-time performance.
     """)
 
-# Models section
 st.header("Models")
 st.write("""
     We have developed and trained various models for specific applications. You can download the pre-trained models and leverage them
     in your projects or applications.
 """)
 
-# Search and filter functionality
 search_query = st.text_input("Search models...", placeholder="Enter a search query")
 model_type_filter = st.multiselect("Filter by model type", ["Object Detection", "Segmentation",])
 models = [
@@ -91,8 +85,6 @@ with model_list:
                     st.image(model["image"], caption=model["name"], use_column_width=True)
                     st.write(f"**Description:** {model['description']}")
                     st.write(f"**Model Type:** {model['type']}")
-                    
-                    # Download button with actual data or URL
                     with open(model["download_url"], "rb") as f:
                         data = f.read()
                     file_data = base64.b64encode(data).decode("utf-8")
@@ -107,7 +99,7 @@ with model_list:
 
 st.divider()
 
-# Datasets section
+
 st.header("Datasets")
 st.write("""
     Roboflow is our go-to platform for data management and model training. It simplifies the process of annotating, organizing, and preprocessing
