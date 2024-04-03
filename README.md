@@ -5,5 +5,7 @@ To find the models and datasets we use visit: https://streamlitultralytics-6mwxw
 Multi-Feature Inference Testing:
 ![alt text](https://github.com/Yaandle/streamlitdeploy/blob/master/pages/Screenshot.png)
 Select a model or upload your own, select a task then either upload an image, multiply images or a video.
+Single-Image
 ![Single-Image](https://github.com/Yaandle/streamlitdeploy/blob/master/pages/Screenshot0.png)
+Multi-Image
 ![Multi-Image](https://github.com/Yaandle/streamlitdeploy/blob/master/pages/Screenshot1.png)
