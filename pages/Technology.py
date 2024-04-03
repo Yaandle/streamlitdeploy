@@ -32,7 +32,7 @@ with st.expander("Computer Vision with Ultralytics"):
 
 st.header("Models")
 st.write("""
-    We have developed and trained various models for specific applications. You can download the pre-trained models and leverage them
+    We have developed and trained various models for specific applications. You can download our pre-trained models and use them
     in your projects or applications.
 """)
 
@@ -102,32 +102,31 @@ st.divider()
 
 st.header("Datasets")
 st.write("""
-    Roboflow is our go-to platform for data management and model training. It simplifies the process of annotating, organizing, and preprocessing
-    data for computer vision tasks. Roboflow also supports seamless integration with popular model training frameworks like Ultralytics.
+Roboflow is our platform for dataset management. It simplifies the process of annotating and labelling, data for computer vision tasks. Roboflow also supports seamless integration with popular model training frameworks like Ultralytics.
 """)
 
 datasets = [
     {
         "name": "Strawberry",
-        "description": "Dataset containing images of strawberries.",
+        "": "Dataset containing images of strawberries.",
         "image": "static/strawberry.jpg",
         "download_url": "https://example.com/datasets/strawberry_dataset.zip"
     },
     {
         "name": "Grapes",
-        "description": "Dataset containing images of different grape varieties.",
+        "": "Dataset containing images of different grape varieties.",
         "image": "static/grapes.jpg",
-        "download_url": "https://example.com/datasets/grapes_dataset.zip"
+        "download_url": "https://universe.roboflow.com/mifood/grapes-mitcn"
     },
     {
         "name": "Tomato",
-        "description": "Dataset containing images of tomatoes.",
+        "": "Dataset containing images of tomatoes.",
         "image": "static/tomato.jpg",
         "download_url": "https://example.com/datasets/tomato_dataset.zip"
     },
     {
         "name": "RnD",
-        "description": "Rider Number Detector, Dataset of riders.",
+        "": "Rider Number Detector, Dataset of riders.",
         "image": "static/555RIDER.jpg",
         "download_url": "https://example.com/datasets/rnd_dataset.zip"
     }
@@ -140,10 +139,13 @@ with dataset_list:
         with cols[idx]:
             with st.expander(dataset["name"]):
                 st.image(dataset["image"], caption=dataset["name"], use_column_width=True)
-                st.write(f"**Description:** {dataset['description']}")
-                st.download_button(
-                    label="Download Dataset",
-                    data=dataset["download_url"],
-                    file_name=dataset["download_url"].split("/")[-1],
-                    mime="application/octet-stream",
-                )
+
+                if dataset["download_url"].startswith("https://universe.roboflow.com"):
+                    st.markdown(f"[View on Roboflow]({dataset['download_url']})")
+                else:
+                    st.download_button(
+                        label="Download Dataset",
+                        data=dataset["download_url"],
+                        file_name=dataset["download_url"].split("/")[-1],
+                        mime="application/octet-stream",
+                    )
