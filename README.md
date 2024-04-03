@@ -4,3 +4,5 @@ To find the models and datasets we use visit: https://streamlitultralytics-6mwxw
 
 Multi-Feature Inference Testing:
 ![alt text](https://github.com/Yaandle/streamlitdeploy/blob/master/Screenshot.png)
+![alt text](https://github.com/Yaandle/streamlitdeploy/blob/master/Screenshot1.png)
+![alt text](https://github.com/Yaandle/streamlitdeploy/blob/master/Screenshot0.png)
