@@ -10,24 +10,21 @@ import numpy as np
 
 st.title("Object Detection Image Sorting")
 
-st.subheader("Input images and filter based off detection" , divider='blue')
-
 destination_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'filtered_images')
-server_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-st.write(f"Server time: {server_time}")
+
 col1, col2 = st.columns(2)
 with col1:
-    st.image('static/headers.png', caption="Object Detection", width=250)
+    st.image('static/headers.png', caption="Object Detection", width=260)
 with col2:
-    st.image('static/labels.jpeg', caption="Object Detection", width=250)
+    st.image('static/labels.jpeg', caption="Object Detection", width=260)
 
-st.subheader("Select a model, define path and desired number", divider='rainbow')
+st.subheader("Select a model, define path and desired class", divider='gray')
 option = st.selectbox('Select a YOLOv8 model.', ('Detect4.0', '200cc', '250cc'))
 st.write('You selected:', option, "Model")
 
 model_paths = {
-    'Detect4.0': 'UltralyticsModels/rnd_detect 4.0.pt',
-    '200cc': 'UltralyticsModels/GrapesModel.pt',
+    'Detect4.0': 'UltralyticsModels/rnd_detect4.0.pt',
+    '0-999': 'UltralyticsModels/GrapesModel.pt',
     '250cc': 'UltralyticsModels/TomatoModel.pt',
 }
 
@@ -87,9 +84,9 @@ else:
 
 st.header("About the Service")
 st.write("""
-    Our Object Detection Service is powered by advanced machine learning algorithms
+    Our Object Detection Service is powered by YOLOv8 computer vision models
     to provide accurate detection and classification of objects within images.
-    Simply upload your images, and let our service do the rest.
+    Simply upload your images, and let the app filter the class you need.
 """)
 
 st.write("© 2023 Object Detection Image Sorting. All rights reserved.")
