@@ -12,20 +12,13 @@ st.title("Object Detection Image Sorting")
 
 destination_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'filtered_images')
 
-col1, col2 = st.columns(2)
-with col1:
-    st.image('static/headers.png', caption="Object Detection", width=260)
-with col2:
-    st.image('static/labels.jpeg', caption="Object Detection", width=260)
-
-st.subheader("Select a model, define path and desired class", divider='gray')
-option = st.selectbox('Select a YOLOv8 model.', ('Detect4.0', '200cc', '250cc'))
+st.divider()
+option = st.selectbox('Select a YOLOv8 model.', ('Detect4.0', '200cc'))
 st.write('You selected:', option, "Model")
 
 model_paths = {
     'Detect4.0': 'UltralyticsModels/rnd_detect4.0.pt',
     '0-999': 'UltralyticsModels/GrapesModel.pt',
-    '250cc': 'UltralyticsModels/TomatoModel.pt',
 }
 
 folder_path = st.text_input("Enter the folder path for image prediction:")

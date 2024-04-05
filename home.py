@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="S-U",
+    page_title="yandlestreamlitapp",
     page_icon="",
     layout="wide"
 )

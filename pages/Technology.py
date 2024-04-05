@@ -104,6 +104,7 @@ st.header("Datasets")
 st.write("""
 Roboflow is our platform for dataset management. It simplifies the process of annotating and labelling, data for computer vision tasks. Roboflow also supports seamless integration with popular model training frameworks like Ultralytics.
 """)
+st.write("To view all our datasets visit MiFood on Roboflow, https://universe.roboflow.com/mifood ")
 
 datasets = [
     {
