@@ -156,24 +156,3 @@ if uploaded_video is not None:
             st.download_button(label="Download Processed Video", data=file, mime="video/mp4")
 
 
-st.subheader("Models")
-st.write('Ultralytics is a framework that allows different computer vision tasks. We train our models with custom data on the YOLOv8 models.')
-st.write('To see a full list of our avaiable models visit the Technology page.')
-st.page_link("pages/Technology.py", label="Models",)
-
-
-
-tab1, tab2, tab3 = st.tabs(["Strawberry", "Grapes", "Tomato"])
-
-with tab1:
-   st.caption("The Strawberry model is trained on 600 images for 100 epochs.")
-   st.image("static/strawberry.jpg", width=400)
-
-with tab2:
-   st.caption("The Grapes model can detect Chardonnay, PinotGris and PinotNoir.")
-   st.image("static/grapes.jpg", width=400)
-
-with tab3:
-   st.caption("Tomato model is trained on 300 images for 100 epochs. ")
-   st.image("static/tomato.jpg", width=400)
-

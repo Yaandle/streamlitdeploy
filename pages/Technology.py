@@ -104,7 +104,6 @@ st.header("Datasets")
 st.write("""
 Roboflow is our platform for dataset management. It simplifies the process of annotating and labelling, data for computer vision tasks. Roboflow also supports seamless integration with popular model training frameworks like Ultralytics.
 """)
-st.write("To view all our datasets visit MiFood on Roboflow, https://universe.roboflow.com/mifood ")
 
 datasets = [
     {
@@ -123,13 +122,13 @@ datasets = [
         "name": "Tomato",
         "": "Dataset containing images of tomatoes.",
         "image": "static/tomato.jpg",
-        "download_url": "https://example.com/datasets/tomato_dataset.zip"
+        "download_url": "https://universe.roboflow.com/mifood/grapes-mitcn"
     },
     {
-        "name": "RnD",
+        "name": "Apple",
         "": "Rider Number Detector, Dataset of riders.",
-        "image": "static/555RIDER.jpg",
-        "download_url": "https://example.com/datasets/rnd_dataset.zip"
+        "image": "static/apple.jpg",
+        "download_url": "https://universe.roboflow.com/mifood/apple-uzehd"
     }
 ]
 

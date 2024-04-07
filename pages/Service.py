@@ -3,7 +3,7 @@ import streamlit as st
 def run():
     st.title("Our Services")
     st.header("Convenience and Results-Based Solutions")
-    st.write(""" At MiFood, our services are designed to offer both convenience and results. We understand the importance of saving your time and increasing production, and our robotics automation solutions are crafted to address these needs effectively. """)
+    st.write(""" At YK, our services are designed to offer both convenience and results. We understand the importance of saving your time and increasing production, and our robotics automation solutions are crafted to address these needs effectively. """)
 
     st.header("Horticultural Harvesting Robotics System")
     st.write(""" Our flagship service revolves around a cutting-edge robotics system tailored for horticultural harvesting. This system harnesses the power of computer vision technology, integrated seamlessly with our advanced robots, to automate fruit harvesting processes. """)
@@ -25,7 +25,7 @@ def run():
 """)
 
     st.header("Pricing")
-    st.write(""" MiFood offers flexible pricing options to suit your needs. Choose the plan that best fits your requirements: """)
+    st.write(""" We offer flexible pricing options to suit your needs. Choose the plan that best fits your requirements: """)
 
     pricing_cols = st.columns(3)
     with pricing_cols[0]:
@@ -62,7 +62,6 @@ def run():
 
         submitted = st.form_submit_button("Request Quote")
         if submitted:
-            # Add code to handle form submission (e.g., send email, save to database)
             st.success(f"Thank you, {name}! Our team will review your request and provide you with a quote shortly.")
 
 if __name__ == "__main__":
