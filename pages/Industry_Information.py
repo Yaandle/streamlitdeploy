@@ -96,19 +96,7 @@ def run():
         """
     )
 
-    st.subheader("Explore Further")
-    explore_cols = st.columns(3)
-    with explore_cols[0]:
-        st.write("### Object Detection Image Sorting")
-        st.page_link("pages/ODIS.py", label=":blue[Learn More]")
 
-    with explore_cols[1]:
-        st.write("### MiFood Inference Testing")
-        st.page_link("pages/MFIT.py", label=":blue[Learn More]")
-
-    with explore_cols[2]:
-        st.write("### Technology")
-        st.page_link("pages/Technology.py", label=":blue[Learn More]")
 
 if __name__ == "__main__":
     run()

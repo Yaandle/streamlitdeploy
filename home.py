@@ -6,7 +6,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Streamlit - Ultralytics app")
+st.title("YK Solutions")
 st.write("Welcome to our website! We are passionate about using computer vision and robotics to improve efficiency.")
 
 st.divider()
