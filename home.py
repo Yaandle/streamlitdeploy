@@ -24,11 +24,11 @@ with container1:
 
 with container2:
     st.subheader("MFIT Inference")
-    st.write("MFIT is our specialized feature for object recognition and analysis.")
+    st.write("MFIT is a feature for model testing.")
     st.page_link("pages/MFIT.py", label="MFIT", icon="📸")
 
     st.subheader("Technology")
-    st.write("Explore the technology used.")
+    st.write("Explore the technology used in our service and operations.")
     st.page_link("pages/Technology.py", label="Technology", icon="🔧")
 
 st.divider()
