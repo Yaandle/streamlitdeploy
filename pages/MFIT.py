@@ -25,8 +25,9 @@ Segmentation is a task that involves segmenting an image into different regions 
 st.markdown(multi)
 st.write('To learn more about Ultralytics visit the docs https://docs.ultralytics.com/.')
 # Model and mode selection
-st.subheader("Select a model, or upload a custom model.")
-option = st.selectbox('Select a YOLOv8 model.', ('Strawberry', 'Grapes', 'Tomato', 'RND', 'Custom'))
+st.divider()
+st.subheader("Select or upload a model")
+option = st.selectbox('Select a YOLOv8 model.', ('Strawberry', 'Grapes', 'Tomato', 'Weeding', 'RND', 'Custom'))
 st.write('You selected:', option, "Model")
 st.subheader("Select a task.")
 option2 = st.selectbox('Select a mode.', ('Detection', 'Segmentation'))
@@ -38,6 +39,7 @@ model_paths = {
     'Grapes': 'UltralyticsModels/GrapesV1.pt',
     'Tomato': 'UltralyticsModels/TomatoV3.pt',
     'Apple': 'UltralyticsModels/AppleV1.pt',
+    'Weeding': 'UltralyticsModels/WeedingV3.pt',
     'RND': 'UltralyticsModels/rnd_detect4.0.pt',
 }
 
@@ -47,6 +49,7 @@ seg_model_paths = {
     'GrapesSeg': 'UltralyticsModels/GrapesV1.pt',
     'TomatoSeg': 'UltralyticsModels/TomatoV3.pt',
     'Apple': 'UltralyticsModels/AppleV1.pt',
+    'Weeding': 'UltralyticsModels/WeedingV3.pt',
     'RND': 'UltralyticsModels/rnd_detect4.0.pt',
 }
 

@@ -82,4 +82,4 @@ st.write("""
     Simply upload your images, and let the app filter the class you need.
 """)
 
-st.write("© 2023 Object Detection Image Sorting. All rights reserved.")
+
