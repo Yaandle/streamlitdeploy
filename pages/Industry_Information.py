@@ -79,9 +79,10 @@ def run():
     st.subheader("Explore Our Automation Solutions")
     st.write(
         """
-        [Learn more about our robotic and AI-powered automation services]()
+        Learn more about our robotic and AI-powered automation services
         """
     )
+    st.page_link("pages/Service.py")
 
 if __name__ == "__main__":
     run()
