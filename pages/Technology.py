@@ -28,8 +28,21 @@ with st.expander("Computer Vision with Ultralytics"):
     st.write("""
         We utilize Ultralytics, a powerful computer vision framework, for tasks such as object detection, segmentation, and tracking.
         Ultralytics provides state-of-the-art models, including YOLOv8, which offers high accuracy and real-time performance.
+        To learn more about Ultralytics visit the docs https://docs.ultralytics.com/.
     """)
+st.subheader("MFIT"
+          )
+multi = '''The MFIT app supports Dectection and Segmentation,
+These 2 tasks have different use cases and results.
 
+Detection is the primary task supported by YOLOv8. It involves detecting objects in an image or video frame and drawing bounding boxes around them.
+
+Segmentation is a task that involves segmenting an image into different regions based on the content of the image. Each region is assigned a label based on its content.
+'''
+
+st.markdown(multi)
+st.page_link("pages/MFIT.py", label="MFIT", icon="📸")
+st.divider()
 st.header("Models")
 st.write("""
     We have developed and trained various models for specific applications. You can download our pre-trained models and use them
