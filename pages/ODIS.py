@@ -9,6 +9,13 @@ import numpy as np
 
 
 st.title("Object Detection Image Sorting")
+st.header("Instructions")
+with st.expander("How to use this app"):
+    st.write("1. Select a YOLOv model from the dropdown.")
+    st.write("2. Enter the folder path containing the images you want to process.")
+    st.write("3. Enter the class number you want to filter for.")
+    st.write("4. Click the 'Run Image Prediction' button.")
+    st.write("5. The filtered images will be downloaded as a ZIP file.")
 
 destination_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'filtered_images')
 
