@@ -7,6 +7,8 @@ st.set_page_config(
 )
 
 st.title("YK Solutions")
+
+
 st.write("Welcome to our website! We are passionate about using computer vision and robotics to improve efficiency.")
 
 st.divider()
