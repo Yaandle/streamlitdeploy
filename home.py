@@ -6,7 +6,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("YK Solutions")
+st.title("MiFood")
 
 
 st.write("Welcome to our website! We are passionate about using computer vision and robotics to improve efficiency.")
@@ -16,33 +16,30 @@ st.divider()
 container1, container2 = st.columns(2)
 
 with container1:
-    st.subheader("Robots as a Service")
-    st.write("Use our robots to automate your workflow.")
-    st.page_link("pages/Service.py", label="Service", icon="🤖")
-
     st.subheader("ODIS Function")
     st.write("A tool for sorting images based on detected objects.")
     st.page_link("pages/ODIS.py", label="ODIS", icon="🔁")
+    st.subheader("Technology")
+    st.write("Explore the technology used in our services and operations.")
+    st.page_link("pages/Technology.py", label="Technology", icon="🔧")
 
 with container2:
     st.subheader("MFIT Inference")
     st.write("MFIT is a feature for model testing.")
     st.page_link("pages/MFIT.py", label="MFIT", icon="📸")
 
-    st.subheader("Technology")
-    st.write("Explore the technology used in our services and operations.")
-    st.page_link("pages/Technology.py", label="Technology", icon="🔧")
+
 
 st.divider()
 
-st.title("About YK Solutions")
+st.title("About MiFood Solutions")
 
 with st.expander("The Robotics Revolution", expanded=True):
     st.write("""
     We're living in a time of unprecedented transformation. The world is on the cusp of a new revolution, driven by the rapid advancement of robotics and automation technologies. This shift is fundamentally changing the way businesses operate, paving the way for a more efficient, sustainable, and prosperous future.
     """)
     st.write("""
-    At YK Solutions, we're at the forefront of this robotics evolution. Our mission is to empower companies of all sizes to embrace this technological revolution and unlock its full potential. We firmly believe that access to cutting-edge automation solutions should not be limited to only the largest enterprises – every business deserves the opportunity to leverage the power of robotics to drive growth and stay ahead of the competition.
+    At MiFood, we're at the forefront of this robotics evolution. Our mission is to empower companies of all sizes to embrace this technological revolution and unlock its full potential. We firmly believe that access to cutting-edge automation solutions should not be limited to only the largest enterprises – every business deserves the opportunity to leverage the power of robotics to drive growth and stay ahead of the competition.
     """)
 
 with st.expander("Our Expertise and Solutions"):

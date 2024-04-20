@@ -45,40 +45,61 @@ st.page_link("pages/MFIT.py", label="MFIT", icon="📸")
 st.divider()
 st.header("Models")
 st.write("""
-    We have developed and trained various models for specific applications. You can download our pre-trained models and use them
-    in your projects or applications.
+We have developed and trained various models for specific applications. You can download our pre-trained models and use them in your projects or applications.
 """)
 
 search_query = st.text_input("Search models...", placeholder="Enter a search query")
-model_type_filter = st.multiselect("Filter by model type", ["Object Detection", "Segmentation",])
+model_type_filter = st.multiselect("Filter by model type", ["Object Detection", "Segmentation", "Weeding", "Cherry", "Full Model"])
+
 models = [
     {
         "name": "Strawberry Detection",
         "description": "A model trained to detect strawberries in images and videos.",
         "image": "static/strawberry.png",
-        "download_url": os.path.join("UltralyticsModels", "StrawberryV6.pt"),  
+        "download_url": os.path.join("UltralyticsModels", "StrawberryV6.pt"),
         "type": "Segmentation, Object Detection"
     },
     {
         "name": "Grape Segmentation",
         "description": "A model trained to segment different grape varieties in images.",
         "image": "static/grapes.jpg",
-        "download_url": os.path.join("UltralyticsModels", "GrapesV1.pt"),  
+        "download_url": os.path.join("UltralyticsModels", "GrapesV1.pt"),
         "type": "Detection, Segmentation"
     },
     {
         "name": "Tomato Detection",
         "description": "A model trained to detect and count tomatoes in images and videos.",
         "image": "static/tomato.jpg",
-        "download_url": os.path.join("UltralyticsModels", "TomatoV3.pt"),  
+        "download_url": os.path.join("UltralyticsModels", "TomatoV3.pt"),
         "type": "Object Detection, Segmentation"
     },
     {
         "name": "Rider Number Detector",
         "description": "A model trained to detect numbers in images and videos.",
         "image": "static/555RIDER.jpg",
-        "download_url": os.path.join("UltralyticsModels", "rnd_detect4.0.pt"),  
+        "download_url": os.path.join("UltralyticsModels", "rnd_detect4.0.pt"),
         "type": "Object Detection"
+    },
+    {
+        "name": "Weeding Model",
+        "description": "A model trained to detect and classify weeds in agricultural fields.",
+        "image": "static/weeding.jpg",
+        "download_url": os.path.join("UltralyticsModels", "WeedingV3.pt"),
+        "type": "Weeding, Object Detection"
+    },
+    {
+        "name": "Cherry Detection",
+        "description": "A model trained to detect and classify cherry varieties.",
+        "image": "static/cherry.jpg",
+        "download_url": os.path.join("UltralyticsModels", "CherryV1.pt"),
+        "type": "Cherry, Object Detection"
+    },
+    {
+        "name": "Full Model",
+        "description": "A comprehensive model trained for multiple agricultural tasks.",
+        "image": "static/full_model.jpg",
+        "download_url": os.path.join("UltralyticsModels", "FullModelV1.pt"),
+        "type": "Full Model, Object Detection, Segmentation"
     }
 ]
 
