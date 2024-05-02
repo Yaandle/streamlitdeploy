@@ -1,0 +1,17 @@
+MIT License
+
+Copyright (c) 2024 Zac Yandle
+
+You are allowed to:
+- Use this software for any purpose
+- Copy the software
+- Modify the software
+- Merge the software with other works
+- Publish modified versions
+- Distribute the software
+- Sublicense the software
+- Sell the software
+
+You must include this license file in all copies or substantial portions of the software.
+
+THIS SOFTWARE IS PROVIDED "AS IS", WITHOUT ANY WARRANTY. THE COPYRIGHT HOLDER IS NOT LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THE USE OF THIS SOFTWARE.
