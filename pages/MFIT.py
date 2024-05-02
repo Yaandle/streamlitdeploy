@@ -34,7 +34,7 @@ option2 = st.selectbox('Select a mode.', ('Detection', 'Segmentation'))
 st.write('You selected:', option2, "mode")
 st.divider()
 model_paths = {
-    'Strawberry': 'UltralyticsModels/StrawberryV8.pt',
+    'Strawberry': 'UltralyticsModels/Strawberry V8.pt',
     'Apple': 'UltralyticsModels/AppleV1.pt',
     'Grapes': 'UltralyticsModels/GrapesV1.pt',
     'Tomato': 'UltralyticsModels/TomatoV3.pt',
@@ -44,7 +44,7 @@ model_paths = {
 }
 
 seg_model_paths = {
-    'StrawberrySeg': 'UltralyticsModels/StrawberryV8.pt',
+    'StrawberrySeg': 'UltralyticsModels/Strawberry V8.pt',
     'AppleSeg': 'UltralyticsModels/AppleV1.pt',
     'GrapesSeg': 'UltralyticsModels/GrapesV1.pt',
     'TomatoSeg': 'UltralyticsModels/TomatoV3.pt',
