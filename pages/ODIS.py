@@ -20,16 +20,16 @@ with st.expander("How to use this app"):
 destination_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'filtered_images')
 
 st.divider()
-option = st.selectbox('Select a YOLOv8 model.', ('Detect4.0', '200cc'))
+option = st.selectbox('Select a YOLOv8 model.', ('0-999', '0-399'))
 st.write('You selected:', option, "Model")
 
 model_paths = {
     'Detect4.0': 'UltralyticsModels/rnd_detect4.0.pt',
-    '0-999': 'UltralyticsModels/GrapesModel.pt',
+    '0-999': 'UltralyticsModels/rnd_detect4.0.pt',
 }
 
 folder_path = st.text_input("Enter the folder path for image prediction:")
-number = st.text_input("Enter a number corresponding to the class for detection:")
+number = st.text_input("Enter the number you want to find the images for:")
 
 try:
     model_path = model_paths.get(option, '')

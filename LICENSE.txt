@@ -3,14 +3,18 @@ MIT License
 Copyright (c) 2024 Zac Yandle
 
 You are allowed to:
-- Use this software for any purpose
-- Copy the software
-- Modify the software
+- Use this software for non-commercial purposes only
 - Merge the software with other works
-- Publish modified versions
-- Distribute the software
-- Sublicense the software
-- Sell the software
+- Publish modified versions for non-commercial use
+- Distribute the software for non-commercial use
+- Sublicense the software for non-commercial use
+
+You are NOT allowed to:
+- Use this software for commercial purposes
+- Sell the software or any derivative works
+
+Additional Terms:
+Certain components of this project, such as the models in the UltralyticsModels folder, may be subject to additional terms and conditions specified separately.
 
 You must include this license file in all copies or substantial portions of the software.
 
