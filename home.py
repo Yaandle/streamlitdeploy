@@ -25,7 +25,7 @@ with container1:
 
 with container2:
     st.subheader("MFIT Inference")
-    st.write("MFIT is a feature for model testing.")
+    st.write("MFIT is a feature for pretrained model testing.")
     st.page_link("pages/MFIT.py", label="MFIT", icon="📸")
 
 

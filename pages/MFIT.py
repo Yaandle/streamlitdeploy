@@ -60,7 +60,6 @@ try:
         model_path = model_paths.get(option, '')
     elif option2 == 'Segmentation':
         model_path = seg_model_paths.get(option + 'Seg', '')
-
     if option == 'Custom':
         uploaded_file = st.file_uploader("Upload your pretrained model", type=['pt'])
         if uploaded_file:
@@ -68,10 +67,10 @@ try:
             with open(model_path, 'wb') as f:
                 f.write(uploaded_file.getbuffer())
             st.success("Custom model uploaded successfully.")
-            try:
-                model = YOLO(model_path)
-            except Exception as e:
-                st.error(f"Failed to load the custom model. Error: {e}")
+    try:
+        model = YOLO(model_path)
+    except Exception as e:
+        st.error(f"Failed to load the model. Error: {e}")
     else:
         if model_path:
             model = YOLO(model_path)
@@ -80,29 +79,36 @@ try:
 except ValueError as e:
     st.warning(str(e))
 
-# Single-Image upload and display
+# Single-Image upload and process
 source_img = st.file_uploader("Choose an image file", type=['png', 'jpeg', 'jpg'])
 if source_img:
-    uploaded_image = Image.open(source_img).convert('RGB')
-    np_image = np.array(uploaded_image)
-    col1, col2 = st.columns(2)
-    with col1:
-        st.image(source_img, caption="Uploaded Image", use_column_width=True)
+    file_bytes = np.asarray(bytearray(source_img.read()), dtype=np.uint8)
+    opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
 
-    if st.button('Detect Objects'):
-        if option2 == 'Segmentation':
-            results = model(np_image, conf=0.3, show_boxes=False)
-            for result in results:
-                annotated_image = result.plot(masks=True, labels=False)
-                annotated_image = Image.fromarray(annotated_image[..., ::-1])
-                with col2:
-                    st.image(annotated_image, caption='Detected Image with Segmentation', use_column_width=True)
-        else:
-            results = model.predict(np_image, conf=0.3, show_conf=True)
-            annotated_image = results[0].plot()
-            annotated_image = Image.fromarray(annotated_image[..., ::-1])
-            with col2:
-                st.image(annotated_image, caption='Detected Image', use_column_width=True)
+    if st.button('Process Image'):
+        results = model(opencv_image, conf=0.2)
+
+        for result in results:
+            if option2 == 'Detection':
+                annotated_image = result.plot(masks=False, labels=True, boxes=True)
+            elif option2 == 'Segmentation':
+                annotated_image = result.plot(masks=True, labels=True, boxes=False)
+
+        annotated_image = np.array(annotated_image)
+        annotated_image_bgr = cv2.cvtColor(annotated_image, cv2.COLOR_RGB2BGR)
+
+        col1, col2 = st.columns(2)
+        with col1:
+            st.image(source_img, caption="Uploaded Image", use_column_width=True)
+        with col2:
+            st.image(annotated_image_bgr, caption='Processed Image', use_column_width=True)
+
+        # Save image to disk if needed
+        if st.button('Save Image'):
+            temp_file_path = f"processed_{source_img.name}"
+            cv2.imwrite(temp_file_path, annotated_image_bgr)
+            with open(temp_file_path, "rb") as f:
+                st.download_button(label="Download Processed Image", data=f, file_name=f"processed_{source_img.name}")
 
 # Multi-image process and download
 uploaded_files = st.file_uploader("Or upload multiple image files", accept_multiple_files=True, type=['png', 'jpeg', 'jpg'])
