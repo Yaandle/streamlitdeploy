@@ -31,7 +31,7 @@ with col1:
 model_paths = {
     'Detect4.0': 'UltralyticsModels/rnd_detect4.0.pt',
     'Fruits': 'UltralyticsModels/rnd_detect4.0.pt',
-    'Rider NF4': 'UltralyticsModels/Strawberry V8.pt',
+    'Rider NF4': 'UltralyticsModels/RiderNF4.pt',
 }
 
 class_lists = {
