@@ -1,4 +1,8 @@
 import streamlit as st
+import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 st.set_page_config(
     page_title="YKSolutions",
@@ -32,23 +36,54 @@ with container2:
 
 st.divider()
 
+styles = """
+<style>
+  form {
+    background-color: #212121;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
 
-st.title("Contact Us")
-st.write("Please fill out the form below to get in touch with us.")
+  input[type=text], input[type=email], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: white;
+    font-size: 14px;
+  }
 
-with st.form(key="contact_form"):
-    col1, col2 = st.columns(2)
-    with col1:
-        name = st.text_input("Name")
-    with col2:
-        email = st.text_input("Email")
-    company = st.text_input("Company")
-    message = st.text_area("Message")
-    submit_button = st.form_submit_button(label="Submit")
+  button[type=submit] {
+    background-color: #800080;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    font-size: 14px;
+  }
 
-if submit_button:
-    st.success("Thank you for contacting us! We'll be in touch soon.")
-    st.write(f"Name: {name}")
-    st.write(f"Email: {email}")
-    st.write(f"Company: {company}")
-    st.write(f"Message: {message}")
+  button[type=submit]:hover {
+    background-color: #45a049;
+  }
+</style>
+"""
+
+# Render the contact form
+contact_form = f"""
+{styles}
+<form action="https://formsubmit.co/8d19c4dff7c14ae7aa2f638d3dbe15f0" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="text" name="name" placeholder="Your name" required>
+  <input type="email" name="email" placeholder="Your email" required>
+  <textarea name="message" placeholder="Your message here"></textarea>
+  <button type="submit">Send</button>
+</form>
+"""
+
+st.markdown(contact_form, unsafe_allow_html=True)

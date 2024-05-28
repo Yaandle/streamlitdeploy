@@ -102,8 +102,6 @@ if source_img:
             st.image(source_img, caption="Uploaded Image", use_column_width=True)
         with col2:
             st.image(annotated_image_bgr, caption='Processed Image', use_column_width=True)
-
-        # Save image to disk if needed
         if st.button('Save Image'):
             temp_file_path = f"processed_{source_img.name}"
             cv2.imwrite(temp_file_path, annotated_image_bgr)
@@ -163,5 +161,3 @@ if uploaded_video is not None:
         out.release()
         with open(output_video_path, "rb") as file:
             st.download_button(label="Download Processed Video", data=file, mime="video/mp4")
-
-
