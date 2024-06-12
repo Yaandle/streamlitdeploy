@@ -27,7 +27,7 @@ st.write('To learn more about Ultralytics visit the docs https://docs.ultralytic
 # Model and mode selection
 st.divider()
 st.subheader("Select or upload a model")
-option = st.selectbox('Select a YOLOv8 model.', ('Strawberry', 'Grapes', 'Tomato', 'Weeding', 'RND', 'Custom'))
+option = st.selectbox('Select a YOLOv8 model.', ('Strawberry', 'Grapes', 'Tomato', 'Weeding', 'Rider NF2', 'Rider NF4', 'Custom'))
 st.write('You selected:', option, "Model")
 st.subheader("Select a task.")
 option2 = st.selectbox('Select a mode.', ('Detection', 'Segmentation'))
@@ -35,12 +35,13 @@ st.write('You selected:', option2, "mode")
 st.divider()
 model_paths = {
     'Strawberry': 'UltralyticsModels/Strawberry V8.pt',
-    'Apple': 'UltralyticsModels/AppleV1.pt',
+    'AppleV1': 'UltralyticsModels/AppleV1.pt',
     'Grapes': 'UltralyticsModels/GrapesV1.pt',
     'Tomato': 'UltralyticsModels/TomatoV3.pt',
     'Apple': 'UltralyticsModels/AppleV1.pt',
     'Weeding': 'UltralyticsModels/WeedingV3.pt',
-    'RND': 'UltralyticsModels/rnd_detect4.0.pt',
+    'Rider NF2': 'UltralyticsModels/rnd_detect4.0.pt',
+    'Rider NF4': 'UltralyticsModels/RiderNF4.pt',
 }
 
 seg_model_paths = {
@@ -118,7 +119,7 @@ if uploaded_files and len(uploaded_files) > 1:
                 for uploaded_file in uploaded_files:
                     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
                     opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
-                    results = model(opencv_image, conf=0.2)
+                    results = model(opencv_image, conf=0.5)
                     for result in results:
                         if option2 == 'Detection':
                             annotated_image = result.plot(masks=False, labels=True, boxes=True)
@@ -161,3 +162,99 @@ if uploaded_video is not None:
         out.release()
         with open(output_video_path, "rb") as file:
             st.download_button(label="Download Processed Video", data=file, mime="video/mp4")
+
+st.divider()
+styles = """
+<style>
+  form {
+    background-color: #212121;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+
+  input[type=text], input[type=email] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: white;
+    font-size: 14px;
+  }
+
+  button[type=submit] {
+    background-color: #800080;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    font-size: 14px;
+  }
+
+  button[type=submit]:hover {
+    background-color: #45a049;
+  }
+</style>
+"""
+
+st.title("Don't have a Model?, Download One of ours:")
+
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.header("AppleV1")
+    with open(model_paths['AppleV1'], "rb") as file:
+        st.download_button(
+            label="Download AppleV1",
+            data=file,
+            file_name="AppleV1.pt",
+            mime="application/octet-stream"
+        )
+
+with col2:
+    st.header("Strawberry")
+    with open(model_paths['Strawberry'], "rb") as file:
+        st.download_button(
+            label="Download Strawberry",
+            data=file,
+            file_name="StrawberryV8.pt",
+            mime="application/octet-stream"
+        )
+
+with col3:
+    st.header("Grapes")
+    with open(model_paths['Grapes'], "rb") as file:
+        st.download_button(
+            label="Download Grapes",
+            data=file,
+            file_name="GrapesV1.pt",
+            mime="application/octet-stream"
+        )
+
+col4, col5 = st.columns(2)
+
+with col4:
+    st.header("Rider NF2")
+    with open(model_paths['Rider NF2'], "rb") as file:
+        st.download_button(
+            label="Download Rider NF2",
+            data=file,
+            file_name="rnd_detect4.0.pt",  
+            mime="application/octet-stream"
+        )
+
+with col5:
+    st.header("Rider NF4")
+    with open(model_paths['Rider NF4'], "rb") as file:
+        st.download_button(
+            label="Download Rider NF4",
+            data=file,
+            file_name="RiderNF4.pt",
+            mime="application/octet-stream"
+        )
