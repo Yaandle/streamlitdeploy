@@ -152,7 +152,7 @@ if uploaded_video is not None:
             ret, frame = cap.read()
             if not ret:
                 break
-            results = model(frame, device=1)
+            results = model(frame)
             for result in results:
                 annotated_frame = result.plot()
                 out.write(annotated_frame)
@@ -164,97 +164,3 @@ if uploaded_video is not None:
             st.download_button(label="Download Processed Video", data=file, mime="video/mp4")
 
 st.divider()
-styles = """
-<style>
-  form {
-    background-color: #212121;
-    padding: 20px;
-    border-radius: 5px;
-    color: white;
-    font-family: Arial, sans-serif;
-  }
-
-  input[type=text], input[type=email] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #333333;
-    color: white;
-    font-size: 14px;
-  }
-
-  button[type=submit] {
-    background-color: #800080;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    float: right;
-    font-size: 14px;
-  }
-
-  button[type=submit]:hover {
-    background-color: #45a049;
-  }
-</style>
-"""
-
-st.title("Don't have a Model?, Download One of ours:")
-
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.header("AppleV1")
-    with open(model_paths['AppleV1'], "rb") as file:
-        st.download_button(
-            label="Download AppleV1",
-            data=file,
-            file_name="AppleV1.pt",
-            mime="application/octet-stream"
-        )
-
-with col2:
-    st.header("Strawberry")
-    with open(model_paths['Strawberry'], "rb") as file:
-        st.download_button(
-            label="Download Strawberry",
-            data=file,
-            file_name="StrawberryV8.pt",
-            mime="application/octet-stream"
-        )
-
-with col3:
-    st.header("Grapes")
-    with open(model_paths['Grapes'], "rb") as file:
-        st.download_button(
-            label="Download Grapes",
-            data=file,
-            file_name="GrapesV1.pt",
-            mime="application/octet-stream"
-        )
-
-col4, col5 = st.columns(2)
-
-with col4:
-    st.header("Rider NF2")
-    with open(model_paths['Rider NF2'], "rb") as file:
-        st.download_button(
-            label="Download Rider NF2",
-            data=file,
-            file_name="rnd_detect4.0.pt",  
-            mime="application/octet-stream"
-        )
-
-with col5:
-    st.header("Rider NF4")
-    with open(model_paths['Rider NF4'], "rb") as file:
-        st.download_button(
-            label="Download Rider NF4",
-            data=file,
-            file_name="RiderNF4.pt",
-            mime="application/octet-stream"
-        )
