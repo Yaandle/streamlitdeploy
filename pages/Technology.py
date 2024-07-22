@@ -94,3 +94,74 @@ with dataset_list:
                         file_name=dataset["download_url"].split("/")[-1],
                         mime="application/octet-stream",
                     )
+st.divider()
+
+model_paths = {
+    'Strawberry': 'UltralyticsModels/Strawberry V8.pt',
+    'AppleV1': 'UltralyticsModels/AppleV1.pt',
+    'Grapes': 'UltralyticsModels/GrapesV1.pt',
+    'Tomato': 'UltralyticsModels/TomatoV3.pt',
+    'Apple': 'UltralyticsModels/AppleV1.pt',
+    'Weeding': 'UltralyticsModels/WeedingV3.pt',
+    'Rider NF2': 'UltralyticsModels/rnd_detect4.0.pt',
+    'Rider NF4': 'UltralyticsModels/RiderNF4.pt',
+}
+
+st.header("Models")
+st.subheader("Don't have a Model?, Download One of ours:")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.header("AppleV1")
+    with open(model_paths['AppleV1'], "rb") as file:
+        st.download_button(
+            label="Download AppleV1",
+            data=file,
+            file_name="AppleV1.pt",
+            mime="application/octet-stream"
+        )
+
+with col2:
+    st.header("Strawberry")
+    with open(model_paths['Strawberry'], "rb") as file:
+        st.download_button(
+            label="Download Strawberry",
+            data=file,
+            file_name="StrawberryV8.pt",
+            mime="application/octet-stream"
+        )
+
+with col3:
+    st.header("Grapes")
+    with open(model_paths['Grapes'], "rb") as file:
+        st.download_button(
+            label="Download Grapes",
+            data=file,
+            file_name="GrapesV1.pt",
+            mime="application/octet-stream"
+        )
+
+col4, col5 = st.columns(2)
+
+with col4:
+    st.header("Rider NF2")
+    with open(model_paths['Rider NF2'], "rb") as file:
+        st.download_button(
+            label="Download Rider NF2",
+            data=file,
+            file_name="rnd_detect4.0.pt",  
+            mime="application/octet-stream"
+        )
+
+with col5:
+    st.header("Rider NF4")
+    with open(model_paths['Rider NF4'], "rb") as file:
+        st.download_button(
+            label="Download Rider NF4",
+            data=file,
+            file_name="RiderNF4.pt",
+            mime="application/octet-stream"
+        )
+
+st.divider()
