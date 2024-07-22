@@ -27,7 +27,7 @@ st.write('To learn more about Ultralytics visit the docs https://docs.ultralytic
 # Model and mode selection
 st.divider()
 st.subheader("Select or upload a model")
-option = st.selectbox('Select a YOLOv8 model.', ('Strawberry', 'Grapes', 'Tomato', 'Weeding', 'Rider NF2', 'Rider NF4', 'Custom'))
+option = st.selectbox('Select a YOLOv8 model.', ('Strawberry', 'Grapes', 'Apple', 'Tomato', 'Weeding', 'Custom'))
 st.write('You selected:', option, "Model")
 st.subheader("Select a task.")
 option2 = st.selectbox('Select a mode.', ('Detection', 'Segmentation'))
@@ -35,10 +35,9 @@ st.write('You selected:', option2, "mode")
 st.divider()
 model_paths = {
     'Strawberry': 'UltralyticsModels/Strawberry V8.pt',
-    'AppleV1': 'UltralyticsModels/AppleV1.pt',
+    'Apple': 'UltralyticsModels/Applev5.pt',
     'Grapes': 'UltralyticsModels/GrapesV1.pt',
     'Tomato': 'UltralyticsModels/TomatoV3.pt',
-    'Apple': 'UltralyticsModels/AppleV1.pt',
     'Weeding': 'UltralyticsModels/WeedingV3.pt',
     'Rider NF2': 'UltralyticsModels/rnd_detect4.0.pt',
     'Rider NF4': 'UltralyticsModels/RiderNF4.pt',
@@ -46,10 +45,9 @@ model_paths = {
 
 seg_model_paths = {
     'StrawberrySeg': 'UltralyticsModels/Strawberry V8.pt',
-    'AppleSeg': 'UltralyticsModels/AppleV1.pt',
+    'AppleSeg': 'UltralyticsModels/Applev5.pt',
     'GrapesSeg': 'UltralyticsModels/GrapesV1.pt',
     'TomatoSeg': 'UltralyticsModels/TomatoV3.pt',
-    'Apple': 'UltralyticsModels/AppleV1.pt',
     'Weeding': 'UltralyticsModels/WeedingV3.pt',
     'RND': 'UltralyticsModels/rnd_detect4.0.pt',
 }
@@ -87,7 +85,7 @@ if source_img:
     opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
 
     if st.button('Process Image'):
-        results = model(opencv_image, conf=0.2)
+        results = model(opencv_image, conf=0.7)
 
         for result in results:
             if option2 == 'Detection':
@@ -119,7 +117,7 @@ if uploaded_files and len(uploaded_files) > 1:
                 for uploaded_file in uploaded_files:
                     file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
                     opencv_image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
-                    results = model(opencv_image, conf=0.5)
+                    results = model(opencv_image, conf=0.7)
                     for result in results:
                         if option2 == 'Detection':
                             annotated_image = result.plot(masks=False, labels=True, boxes=True)
