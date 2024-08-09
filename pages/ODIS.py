@@ -25,12 +25,13 @@ st.divider()
 
 col1, col2 = st.columns(2)
 model_paths = {
-    'Apple': 'UltralyticsModels/AppleV1.pt',
+    'Apple': 'UltralyticsModels/Applev5.pt',
     'Strawberry': 'UltralyticsModels/StrawberryV9.pt',
     'Grapes': 'UltralyticsModels/GrapesV1.pt',
     'Rider NF2': 'UltralyticsModels/rnd_detect4.0.pt',
     'Rider NF5': 'UltralyticsModels/rnf5.pt',
     'Rider NF6': 'UltralyticsModels/rnf6.pt',
+    'YOLOv10': 'UltralyticsModels/yolov10m.pt',
 }
 
 with col1:
@@ -76,6 +77,7 @@ class_lists = {
         '999'
     ],
     'Rider NF6': ['10', '100', '103', '105', '106', '11', '111', '112', '113', '115', '117', '118', '12', '122', '123', '126', '132', '133', '145', '15', '150', '151', '152', '159', '160', '162', '165', '166', '17', '171', '174', '177', '178', '18', '182', '184', '188', '189', '199', '2', '20', '201', '202', '204', '207', '209', '210', '211', '215', '216', '22', '228', '23', '233', '24', '25', '257', '27', '271', '28', '290', '295', '299', '31', '33', '338', '348', '376', '411', '414', '427', '428', '43', '44', '45', '46', '49', '5', '514', '549', '55', '57', '578', '58', '598', '609', '66', '666', '69', '700', '711', '74', '768', '77', '789', '8', '80', '82', '84', '86', '88', '883', '89', '96', '99', '999'],
+    'YOLOv10': [''],
 }
 
 with col2:
@@ -92,7 +94,11 @@ def extract_zip(file):
 if uploaded_zip is not None:
     with st.spinner("Extracting ZIP file..."):
         extract_zip(uploaded_zip)
+        if not os.listdir(destination_dir):
+            st.error("No files found in the extracted directory. Please check the ZIP file contents.")
+            st.stop()
         st.success("ZIP file extracted successfully.")
+
 
 try:
     model_path = model_paths.get(option, '')
@@ -119,9 +125,15 @@ if st.button("Run Image Prediction") and uploaded_zip is not None:
                     for box in boxes:
                         if 0 <= int(box.cls) < len(class_list):
                             class_name = class_list[int(box.cls)]
-                            zip_file.write(image_path, os.path.join(class_name, file))
+                            class_dir = os.path.join(results_dir, class_name)
+                            if not os.path.exists(class_dir):
+                                os.makedirs(class_dir)
+                            class_file_path = os.path.join(class_dir, file)
+                            shutil.copy(image_path, class_file_path)
+                            zip_file.write(class_file_path, os.path.join(class_name, file))
                         else:
                             st.warning(f"Detected class index {int(box.cls)} is out of range.")
+
 
     st.success(f"Object detection completed. Images have been sorted into class folders and a ZIP file has been created.")
 
