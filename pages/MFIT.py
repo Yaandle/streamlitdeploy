@@ -27,7 +27,7 @@ st.write('To learn more about Ultralytics visit the docs https://docs.ultralytic
 # Model and mode selection
 st.divider()
 st.subheader("Select or upload a model")
-option = st.selectbox('Select a YOLOv8 model.', ('Strawberry', 'Grapes', 'Apple', 'Tomato', 'Weeding', 'Custom'))
+option = st.selectbox('Select a YOLOv8 model.', ('Strawberry', 'Grapes', 'Apple', 'Custom'))
 st.write('You selected:', option, "Model")
 st.subheader("Select a task.")
 option2 = st.selectbox('Select a mode.', ('Detection', 'Segmentation'))
@@ -37,8 +37,6 @@ model_paths = {
     'Strawberry': 'UltralyticsModels/Strawberry V8.pt',
     'Apple': 'UltralyticsModels/Applev5.pt',
     'Grapes': 'UltralyticsModels/GrapesV1.pt',
-    'Tomato': 'UltralyticsModels/TomatoV3.pt',
-    'Weeding': 'UltralyticsModels/WeedingV3.pt',
     'Rider NF2': 'UltralyticsModels/rnd_detect4.0.pt',
     'Rider NF4': 'UltralyticsModels/RiderNF4.pt',
 }
@@ -47,9 +45,7 @@ seg_model_paths = {
     'StrawberrySeg': 'UltralyticsModels/Strawberry V8.pt',
     'AppleSeg': 'UltralyticsModels/Applev5.pt',
     'GrapesSeg': 'UltralyticsModels/GrapesV1.pt',
-    'TomatoSeg': 'UltralyticsModels/TomatoV3.pt',
-    'Weeding': 'UltralyticsModels/WeedingV3.pt',
-    'RND': 'UltralyticsModels/rnd_detect4.0.pt',
+
 }
 
 

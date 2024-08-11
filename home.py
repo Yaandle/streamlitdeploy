@@ -1,8 +1,4 @@
 import streamlit as st
-import os
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 
 st.set_page_config(
     page_title="YKSolutions",
@@ -10,10 +6,12 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("YK")
+st.title("Welcome to YK Solutions")
 
+st.write("""
+At YK Solutions, we build software, hardware, and robotics to make your business more efficient. Our solutions are designed to streamline processes and deliver results that fit your needs.
+""")
 
-st.write("Welcome to our website! We are passionate about using computer vision and robotics to improve efficiency in businesses.")
 
 st.divider()
 
@@ -23,19 +21,16 @@ with container1:
     st.subheader("ODIS Function")
     st.write("A tool for sorting images based on detected objects.")
     st.page_link("pages/ODIS.py", label="ODIS", icon="🔁")
-    st.subheader("Technology")
-    st.write("Explore the technology used in our services and operations.")
-    st.page_link("pages/Technology.py", label="Technology", icon="🔧")
 
 with container2:
     st.subheader("MFIT Inference")
     st.write("MFIT is a feature for pretrained model testing.")
     st.page_link("pages/MFIT.py", label="MFIT", icon="📸")
 
-
-
 st.divider()
 
+st.markdown("### Reach out to us")
+st.write("Discover how our specialized tools can transform your operations and bring advanced automation to your workflow.")
 
 
 

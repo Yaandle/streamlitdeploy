@@ -1,4 +1,8 @@
-This app was made to help test different YOLOv8 models run detection and segmentation tasks on single, multi-image and video sources.
+This app was made to help test different YOLOv8 models.
+It includes:
+- MFIT, to run detection and segmentation tasks on single, multi-image and video sources.
+- ODIS, to sort images based on class name. 
+
 
 To find the models and datasets we use, visit: https://streamlitultralytics-6mwxw6m26q-as.a.run.app/Technology
 

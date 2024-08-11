@@ -135,11 +135,11 @@ if st.button("Run Image Prediction") and uploaded_zip is not None:
                             st.warning(f"Detected class index {int(box.cls)} is out of range.")
 
 
-    st.success(f"Object detection completed. Images have been sorted into class folders and a ZIP file has been created.")
+    st.success(f"Object detection completed. The images have been sorted into class folders and a ZIP file has been created.")
 
     with open(zip_output_path, "rb") as f:
         b64 = base64.b64encode(f.read()).decode()
-        href = f'<a href="data:file/zip;base64,{b64}" download="{os.path.basename(zip_output_path)}">Download Sorted Images</a>'
+        href = f'<a href="data:file/zip;base64,{b64}" download="{os.path.basename(zip_output_path)}">Download Images</a>'
         st.markdown(href, unsafe_allow_html=True)
 else:
     st.warning("Please upload a ZIP file and click the 'Run Image Prediction' button.")
