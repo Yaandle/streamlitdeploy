@@ -87,6 +87,10 @@ with col2:
 
 uploaded_zip = st.file_uploader("Upload a ZIP file containing images", type=["zip"])
 
+@st.cache_resource
+def load_model(model_path):
+    return YOLO(model_path)
+
 def extract_zip(file):
     with zipfile.ZipFile(file, 'r') as zip_ref:
         zip_ref.extractall(destination_dir)
@@ -99,12 +103,11 @@ if uploaded_zip is not None:
             st.stop()
         st.success("ZIP file extracted successfully.")
 
-
 try:
     model_path = model_paths.get(option, '')
     if not model_path:
         raise ValueError("Model path not found.")
-    model = YOLO(model_path)
+    model = load_model(model_path)
 except Exception as e:
     st.error(f"Failed to load model. Error: {e}")
     st.stop()
@@ -116,30 +119,37 @@ if st.button("Run Image Prediction") and uploaded_zip is not None:
     zip_output_path = os.path.join(results_dir, 'filtered_images.zip')
 
     with zipfile.ZipFile(zip_output_path, 'w') as zip_file:
-        for root, dirs, files in os.walk(destination_dir):
-            for file in files:
-                image_path = os.path.join(root, file)
-                if os.path.isfile(image_path):
-                    results = model(image_path, conf=0.8)
-                    boxes = results[0].boxes
-                    for box in boxes:
-                        if 0 <= int(box.cls) < len(class_list):
-                            class_name = class_list[int(box.cls)]
-                            class_dir = os.path.join(results_dir, class_name)
-                            if not os.path.exists(class_dir):
-                                os.makedirs(class_dir)
-                            class_file_path = os.path.join(class_dir, file)
-                            shutil.copy(image_path, class_file_path)
-                            zip_file.write(class_file_path, os.path.join(class_name, file))
-                        else:
-                            st.warning(f"Detected class index {int(box.cls)} is out of range.")
+        image_files = [f for f in os.listdir(destination_dir) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
+        total_images = len(image_files)
+        
+        progress_bar = st.progress(0)
+        status_text = st.empty()
 
+        for i, file in enumerate(image_files):
+            image_path = os.path.join(destination_dir, file)
+            results = model(image_path, conf=0.8)
+            boxes = results[0].boxes
+            for box in boxes:
+                if 0 <= int(box.cls) < len(class_list):
+                    class_name = class_list[int(box.cls)]
+                    class_dir = os.path.join(results_dir, class_name)
+                    if not os.path.exists(class_dir):
+                        os.makedirs(class_dir)
+                    class_file_path = os.path.join(class_dir, file)
+                    shutil.copy(image_path, class_file_path)
+                    zip_file.write(class_file_path, os.path.join(class_name, file))
+                else:
+                    st.warning(f"Detected class index {int(box.cls)} is out of range for image {file}.")
+            
+            progress = (i + 1) / total_images
+            progress_bar.progress(progress)
+            status_text.text(f"Processing image {i+1} of {total_images}")
 
     st.success(f"Object detection completed. The images have been sorted into class folders and a ZIP file has been created.")
 
     with open(zip_output_path, "rb") as f:
         b64 = base64.b64encode(f.read()).decode()
-        href = f'<a href="data:file/zip;base64,{b64}" download="{os.path.basename(zip_output_path)}">Download Images</a>'
+        href = f'<a href="data:file/zip;base64,{b64}" download="{os.path.basename(zip_output_path)}">Download Filtered Images</a>'
         st.markdown(href, unsafe_allow_html=True)
 else:
     st.warning("Please upload a ZIP file and click the 'Run Image Prediction' button.")

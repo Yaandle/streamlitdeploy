@@ -16,7 +16,6 @@ st.subheader("Object Detection Image/Video Inference"
 st.divider()
 
 multi = '''The MFIT app supports Dectection and Segmentation,
-These 2 tasks have different use cases and results.
 
 Detection is the primary task supported by YOLOv8. It involves detecting objects in an image or video frame and drawing bounding boxes around them.
 
@@ -27,11 +26,11 @@ st.write('To learn more about Ultralytics visit the docs https://docs.ultralytic
 # Model and mode selection
 st.divider()
 st.subheader("Select or upload a model")
-option = st.selectbox('Select a YOLOv8 model.', ('Strawberry', 'Grapes', 'Apple', 'Custom'))
+option = st.selectbox('Select a YOLO model.', ('Strawberry', 'Grapes', 'Apple', 'Custom'))
 st.write('You selected:', option, "Model")
 st.subheader("Select a task.")
 option2 = st.selectbox('Select a mode.', ('Detection', 'Segmentation'))
-st.write('You selected:', option2, "mode")
+st.write('You selected to use:', option2, "mode")
 st.divider()
 model_paths = {
     'Strawberry': 'UltralyticsModels/Strawberry V8.pt',
