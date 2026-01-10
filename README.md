@@ -44,8 +44,6 @@ This repo is part of a **deployment literacy showcase** and was originally part 
 Notes
 
 Public archive: code is for demonstration purposes only, not production-ready
-
 Illustrates object detection, segmentation, and batch processing workflows
 
-For full pipelines and CV integrations, see the consolidated private ODIS repo
 
