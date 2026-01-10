@@ -40,6 +40,18 @@ This repo is part of a **deployment literacy showcase** and was originally part 
 ![Video](https://github.com/Yaandle/streamlitdeploy/blob/master/pages/Screenshot1.png)
 
 ---
+## Technology
+
+This project demonstrates the integration of modern technologies for computer vision deployment:
+
+- **Streamlit** – lightweight web interface for interactive ML apps  
+- **YOLOv8 (Ultralytics)** – real-time object detection and segmentation  
+- **OpenCV / PIL / NumPy** – image/video processing and transformations  
+- **Roboflow** – dataset management and integration for CV model training  
+- **Robot Operating System (ROS)** – framework for robotics applications (demonstrated in related repos)  
+
+The app illustrates **end-to-end CV deployment workflows**, including model selection, inference, multi-file processing, and results download.
+
 
 Notes
 
